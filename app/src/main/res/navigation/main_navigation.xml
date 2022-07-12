@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/charaterListFragment">
+
+    <fragment
+        android:id="@+id/charaterListFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.obassignment.presentation.CharacterListFragment"
+        tools:layout="@layout/fragment_character_list">
+
+        <action
+            android:id="@+id/actionCharaterListFragmentToCharaterDetailfragment"
+            app:destination="@+id/characterDetailsFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/characterDetailsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.obassignment.presentation.characterDetails.CharacterDetailsFragment"
+        >
+        <argument
+            android:name="charaterId"
+            android:defaultValue="1"
+            app:argType="integer"
+            app:nullable="false"
+            />
+    </fragment>
+
+</navigation>
