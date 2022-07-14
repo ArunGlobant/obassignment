@@ -3,6 +3,7 @@
     <string name="characters">Characters</string>
     <string name="character_details">Character Details</string>
     <string name="no_data_available">No Data Available</string>
+    <string name="error_occured">Error Occured</string>
 
 
 </resources>

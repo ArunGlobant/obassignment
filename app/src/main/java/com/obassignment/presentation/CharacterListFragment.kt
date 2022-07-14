@@ -32,14 +32,11 @@ class CharacterListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         binding.recyclerViewCharacters.apply {
             adapter = characterAdapter
         }
 
         viewModel.getCharacterList()
-
-
         lifecycleScope.launchWhenCreated {
 
             viewModel.characterList.collect{
@@ -56,14 +53,11 @@ class CharacterListFragment : Fragment() {
                     if(it.isEmpty()){
                         binding.txtNodata.visibility = View.VISIBLE
                     }
-
                     binding.txtprogressBar.visibility = View.GONE
                     characterAdapter.setContent(it.toMutableList())
-
                 }
             }
         }
-
         characterAdapter.itemClickListener {
             findNavController().navigate(
                 CharacterListFragmentDirections.actionCharaterListFragmentToCharaterDetailfragment(

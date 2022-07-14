@@ -14,7 +14,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CharacterDetailsFragment : Fragment() {
     private var _binding: FragmentCharacterDetailsBinding? = null
     val binding: FragmentCharacterDetailsBinding
-    get() = _binding!!
+        get() = _binding!!
 
     private val characterDetailsViewModel: CharacterDetailsViewModel by viewModel()
     private val args: CharacterDetailsFragmentArgs by navArgs()
@@ -29,9 +29,9 @@ class CharacterDetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       args.charaterId?.let {
-           characterDetailsViewModel.getCharacterDetails(it)
-       }
+        args.charaterId?.let {
+            characterDetailsViewModel.getCharacterDetails(it)
+        }
         lifecycle.coroutineScope.launchWhenCreated {
             characterDetailsViewModel.characterDetails.collect{
                 if(it.isLoading){

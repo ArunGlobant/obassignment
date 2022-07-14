@@ -9,7 +9,7 @@ import com.obassignment.domain.model.charaterlistModel.ResultModel
 import com.obassignment.domain.repository.CharacterDetailsRepository
 
 class CharacterDetailsRepositoryImpl constructor(private val apiService: ApiService,
- private val characterRemoteMapperImpl: CharacterRemoteMapperImpl) : CharacterDetailsRepository, SafeApiRequest() {
+                                                 private val characterRemoteMapperImpl: CharacterRemoteMapperImpl) : CharacterDetailsRepository, SafeApiRequest() {
     override suspend fun getCharacterDetails(characterId: Int): List<ResultModel> {
         val response =  apiService.getCharacterDetails(
             characterId,

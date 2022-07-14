@@ -2,6 +2,7 @@ package com.obassignment.data.network.dto.characterlistDto
 
 
 data class CharacterListDTO(
+    //@Json(name = "attributionHTML")
     val attributionHTML: String,
     val attributionText: String,
     val code: Int,

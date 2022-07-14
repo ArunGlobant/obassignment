@@ -25,12 +25,12 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
         parent: ViewGroup,
         viewType: Int
     ): CharacterAdapter.MyViewHolder {
-       val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
+        val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
         return MyViewHolder(binding)
     }
 
     fun itemClickListener(result: (ResultModel) -> Unit){
-      listener = result
+        listener = result
     }
 
     override fun onBindViewHolder(holder: CharacterAdapter.MyViewHolder, position: Int) {
