@@ -16,7 +16,7 @@ class CharacterDetailsViewModel constructor(private val getCharacterDetailsUseCa
 
     fun getCharacterDetails(characterId: Int){
         viewModelScope.launch {
-            val response = getCharacterDetailsUseCaseImpl.invoke(characterId)
+            val response = getCharacterDetailsUseCaseImpl.getcharaterDetail(characterId)
             when (response) {
                 is Resource.Loading -> {
                     _characterDetails.value = CharacterDetailsState(isLoading = true)

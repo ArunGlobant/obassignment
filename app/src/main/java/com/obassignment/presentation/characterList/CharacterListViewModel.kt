@@ -16,7 +16,7 @@ class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: G
 
     fun getCharacterList(){
         viewModelScope.launch {
-            val response = getCharactersUseCaseImpl.invoke()
+            val response = getCharactersUseCaseImpl.getcharacterList()
             when (response) {
                 is Resource.Loading -> {
                     _characterList.value = CharacterState(isLoading = true)
