@@ -11,23 +11,22 @@ import com.obassignment.domain.model.charaterlistModel.ThumbnailModel
 
 class CharacterRemoteMapperImpl : CharacterRemoteMapper {
     override fun toModel(characterListDTO: CharacterListDTO): List<ResultModel> {
-        return characterListDTO.data.results?.map { it ->
+        return characterListDTO.data?.results?.map { it ->
             ResultModel(
-                id = it.id,
-                name = it.name,
-                thumbnail = it.thumbnail.toDomainThumbnailModel()
+                id = it.id!!,
+                name = it.name!!,
+                thumbnail = it.thumbnail!!.toDomainThumbnailModel()
 
             )
         }.orEmpty()
     }
 
 
-
     fun CharacterListDTO.toDomainCharaterModel():CharaterModel{
         return CharaterModel(
-            code = code,
-            data = data.toDomainDataModel(),
-            status = status
+            code = code!!,
+            data = data!!.toDomainDataModel(),
+            status = status!!
         )
     }
 
@@ -35,26 +34,26 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
         return map{
 
             ResultModel(
-                id = it.id,
-                name = it.name,
-                thumbnail = it.thumbnail.toDomainThumbnailModel(),
+                id = it.id!!,
+                name = it.name!!,
+                thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
             )
         }
     }
 
     fun ThumbnailDTO.toDomainThumbnailModel(): ThumbnailModel {
         return ThumbnailModel(
-            extension, path
+            extension!!, path!!
         )
     }
 
     fun DataDTO.toDomainDataModel(): DataModel {
         return DataModel(
-            count = count,
-            limit = limit,
-            offset = offset,
-            results = results.toDomainResultModel(),
-            total = total
+            count = count!!,
+            limit = limit!!,
+            offset = offset!!,
+            results = results!!.toDomainResultModel(),
+            total = total!!
         )
     }
 }
