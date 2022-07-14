@@ -11,9 +11,9 @@ data class CharaterModel(
 
 data class ComicsModel(
     val available: Int,
-    val collectionURI: String,
+   /* val collectionURI: String,
     val items: List<ItemModel>,
-    val returned: Int
+    val returned: Int*/
 )
 
 data class DataModel(
@@ -42,22 +42,25 @@ data class ItemXXXModel(
 data class ResultModel(
     val id: Int,
     val name: String,
-    val thumbnail: ThumbnailModel
+    val thumbnail: ThumbnailModel,
+    val comics: ComicsModel,
+    val stories: StoriesModel,
+    val series: SeriesModel
 
 )
 
 data class SeriesModel(
     val available: Int,
-    val collectionURI: String,
+   /* val collectionURI: String,
     val items: List<ItemModel>,
-    val returned: Int
+    val returned: Int*/
 )
 
 data class StoriesModel(
     val available: Int,
-    val collectionURI: String,
+   /* val collectionURI: String,
     val items: List<ItemXXXModel>,
-    val returned: Int
+    val returned: Int*/
 )
 
 data class ThumbnailModel(

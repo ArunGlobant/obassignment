@@ -1,13 +1,7 @@
 package com.obassignment.data.mappers
 
-import com.obassignment.data.network.dto.characterlistDto.CharacterListDTO
-import com.obassignment.data.network.dto.characterlistDto.DataDTO
-import com.obassignment.data.network.dto.characterlistDto.ResultDTO
-import com.obassignment.data.network.dto.characterlistDto.ThumbnailDTO
-import com.obassignment.domain.model.charaterlistModel.CharaterModel
-import com.obassignment.domain.model.charaterlistModel.DataModel
-import com.obassignment.domain.model.charaterlistModel.ResultModel
-import com.obassignment.domain.model.charaterlistModel.ThumbnailModel
+import com.obassignment.data.network.dto.characterlistDto.*
+import com.obassignment.domain.model.charaterlistModel.*
 
 class CharacterRemoteMapperImpl : CharacterRemoteMapper {
     override fun toModel(characterListDTO: CharacterListDTO): List<ResultModel> {
@@ -15,8 +9,10 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
             ResultModel(
                 id = it.id!!,
                 name = it.name!!,
-                thumbnail = it.thumbnail!!.toDomainThumbnailModel()
-
+                thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
+                comics = it.comics!!.toDomainComicsModel(),
+                stories = it.stories!!.toDomainStoriesModel(),
+                series = it.series!!.toDomainSeriesModel()
             )
         }.orEmpty()
     }
@@ -37,6 +33,9 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
                 id = it.id!!,
                 name = it.name!!,
                 thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
+                comics = it.comics!!.toDomainComicsModel(),
+                stories = it.stories!!.toDomainStoriesModel(),
+                series = it.series!!.toDomainSeriesModel()
             )
         }
     }
@@ -44,6 +43,25 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
     fun ThumbnailDTO.toDomainThumbnailModel(): ThumbnailModel {
         return ThumbnailModel(
             extension!!, path!!
+        )
+    }
+
+    fun ComicsDTO.toDomainComicsModel(): ComicsModel {
+        return ComicsModel(
+            available!!
+        )
+    }
+
+    fun StoriesDTO.toDomainStoriesModel(): StoriesModel {
+        return StoriesModel(
+            available!!
+        )
+    }
+
+
+    fun SeriesDTO.toDomainSeriesModel(): SeriesModel {
+        return SeriesModel(
+            available!!
         )
     }
 
