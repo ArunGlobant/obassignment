@@ -126,6 +126,25 @@
             app:layout_constraintStart_toEndOf="@+id/txtStories"
             app:layout_constraintTop_toBottomOf="@+id/txtSeriesCount" />
 
+        <TextView
+            android:id="@+id/txtEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/events_count"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintTop_toBottomOf="@+id/txtStories"
+            app:layout_constraintStart_toStartOf="@+id/guideline"/>
+
+        <TextView
+            android:id="@+id/txtEventsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{Integer.toString(result.events.available)}"
+            android:layout_marginTop="@dimen/dp_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtEvents"
+            app:layout_constraintTop_toBottomOf="@+id/txtStoriesCount" />
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"

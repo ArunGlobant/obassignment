@@ -12,7 +12,8 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
                 thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
                 comics = it.comics!!.toDomainComicsModel(),
                 stories = it.stories!!.toDomainStoriesModel(),
-                series = it.series!!.toDomainSeriesModel()
+                series = it.series!!.toDomainSeriesModel(),
+                events = it.events!!.toDomainEventsModel()
             )
         }.orEmpty()
     }
@@ -35,7 +36,8 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
                 thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
                 comics = it.comics!!.toDomainComicsModel(),
                 stories = it.stories!!.toDomainStoriesModel(),
-                series = it.series!!.toDomainSeriesModel()
+                series = it.series!!.toDomainSeriesModel(),
+                events = it.events!!.toDomainEventsModel()
             )
         }
     }
@@ -61,6 +63,11 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
 
     fun SeriesDTO.toDomainSeriesModel(): SeriesModel {
         return SeriesModel(
+            available!!
+        )
+    }
+    fun EventsDTO.toDomainEventsModel(): EventsModel {
+        return EventsModel(
             available!!
         )
     }
