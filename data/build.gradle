@@ -70,6 +70,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:3.5.15'
     androidTestImplementation 'org.mockito:mockito-android:2.24.5'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC3'
+    testImplementation 'org.mockito:mockito-inline:3.5.15'
 
     //coroutines test
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1'

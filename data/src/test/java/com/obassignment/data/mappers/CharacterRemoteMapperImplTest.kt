@@ -2,8 +2,7 @@ package com.obassignment.data.mappers
 
 import com.obassignment.data.network.dto.characterlistDto.*
 import com.obassignment.data.repository.CharacterDetailsRepositoryImpl
-import com.obassignment.domain.model.charaterlistModel.ResultModel
-import com.obassignment.domain.model.charaterlistModel.ThumbnailModel
+import com.obassignment.domain.model.charaterlistModel.*
 import io.mockk.MockKAnnotations
 import io.mockk.verify
 import org.junit.Assert.*
@@ -14,8 +13,8 @@ import org.mockito.Mockito
 
 class CharacterRemoteMapperImplTest{
 
-    @Mock
-    lateinit var characterRemoteMapper: CharacterRemoteMapper
+
+    //var characterRemoteMapper: CharacterRemoteMapper
     lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
 
     @Before
@@ -50,7 +49,12 @@ class CharacterRemoteMapperImplTest{
 
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
-        val resultModel = ResultModel(1, "3-D Man", thumbnailModel)
+        val comicsModel = ComicsModel(5)
+        val seriesModel = SeriesModel(4)
+        val storiesModel = StoriesModel(5)
+        val eventsModel = EventsModel(2)
+        val resultModel = ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            seriesModel, eventsModel)
         val characterList = listOf(resultModel)
 
         Mockito.`when`(characterRemoteMapperImpl.toModel(characterListDTO)).thenReturn(characterList)

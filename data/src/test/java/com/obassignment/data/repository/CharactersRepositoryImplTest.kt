@@ -1,11 +1,12 @@
 package com.obassignment.data.repository
 
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.whenever
 import com.obassignment.common.Resource
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
 import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.domain.model.charaterlistModel.ResultModel
-import com.obassignment.domain.model.charaterlistModel.ThumbnailModel
+import com.obassignment.domain.model.charaterlistModel.*
 import io.mockk.MockKAnnotations
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
@@ -14,20 +15,19 @@ import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.mock
 import java.sql.Timestamp
 
 class CharactersRepositoryImplTest{
 
-    @Mock
-    lateinit var apiService: ApiService
-    @Mock
-    lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
+    var apiService: ApiService = mock()
+    var characterRemoteMapperImpl: CharacterRemoteMapperImpl = mock()
     lateinit var underTest: CharactersRepositoryImpl
 
 
     @Before
     fun setUp(){
-      MockKAnnotations.init(this)
+        MockKAnnotations.init(this)
         underTest = Mockito.spy(CharactersRepositoryImpl(apiService, characterRemoteMapperImpl))
     }
     @Test
@@ -35,7 +35,12 @@ class CharactersRepositoryImplTest{
 
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
-        val resultModel = ResultModel(1, "3-D Man", thumbnailModel)
+        val comicsModel = ComicsModel(5)
+        val seriesModel = SeriesModel(4)
+        val storiesModel = StoriesModel(5)
+        val eventsModel = EventsModel(2)
+        val resultModel = ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            seriesModel, eventsModel)
 
 
         val urlDTO = UrlDTO("detail", "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=fcf9a89dd88a8f74de6a92ffa8deccc6")
@@ -51,16 +56,17 @@ class CharactersRepositoryImplTest{
 
         val dataDto = DataDTO(10,1,0,listOf(resultDto), 100)
         val characterListDTO=  CharacterListDTO("html",
-        "attribute",
-        200,
-        "abc",
+            "attribute",
+            200,
+            "abc",
             dataDto,
-        "f0f50f72d6ce5fc",
-        "Ok")
+            "f0f50f72d6ce5fc",
+            "Ok")
 
         val characterList = listOf(resultModel)
 
         Mockito.`when`(underTest.getCharacterList()).thenReturn(characterList)
+
 
         assertEquals(true,  characterRemoteMapperImpl.toModel(characterListDTO))
         verify { characterRemoteMapperImpl.toModel(characterListDTO) }

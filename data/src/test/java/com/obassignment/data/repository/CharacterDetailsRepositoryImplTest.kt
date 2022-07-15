@@ -1,10 +1,10 @@
 package com.obassignment.data.repository
 
+import com.nhaarman.mockitokotlin2.mock
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
 import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.domain.model.charaterlistModel.ResultModel
-import com.obassignment.domain.model.charaterlistModel.ThumbnailModel
+import com.obassignment.domain.model.charaterlistModel.*
 import io.mockk.MockKAnnotations
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking
@@ -14,12 +14,12 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 
+
 class CharacterDetailsRepositoryImplTest{
 
-    @Mock
-    lateinit var apiService: ApiService
-    @Mock
-    lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
+
+    var apiService: ApiService = mock()
+    var characterRemoteMapperImpl: CharacterRemoteMapperImpl = mock()
     lateinit var underTest: CharacterDetailsRepositoryImpl
 
 
@@ -33,7 +33,12 @@ class CharacterDetailsRepositoryImplTest{
 
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
-        val resultModel = ResultModel(1, "3-D Man", thumbnailModel)
+        val comicsModel = ComicsModel(5)
+        val seriesModel = SeriesModel(4)
+        val storiesModel = StoriesModel(5)
+        val eventsModel = EventsModel(2)
+        val resultModel = ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            seriesModel, eventsModel)
 
 
         val urlDTO = UrlDTO("detail", "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=fcf9a89dd88a8f74de6a92ffa8deccc6")
