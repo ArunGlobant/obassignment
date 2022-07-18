@@ -23,11 +23,11 @@ class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: G
                 }
                 is Resource.Error -> {
                     _characterList.value = CharacterState(error = response.message ?: "")
-                    Log.d("Error:====  ", "" + _characterList.value)
+                  //  Log.d("Error:====  ", "" + _characterList.value)
                 }
                 is Resource.Success -> {
                     _characterList.value = CharacterState(data = response.data)
-                    Log.d("data:====  ", "" + _characterList.value)
+                   // Log.d("data:====  ", "" + _characterList.value)
                 }
             }
         }

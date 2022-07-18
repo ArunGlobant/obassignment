@@ -1,5 +1,6 @@
 package com.obassignment.data.mappers
 
+import com.nhaarman.mockitokotlin2.verify
 import com.obassignment.data.network.dto.characterlistDto.*
 import com.obassignment.data.repository.CharacterDetailsRepositoryImpl
 import com.obassignment.domain.model.charaterlistModel.*
@@ -13,9 +14,8 @@ import org.mockito.Mockito
 
 class CharacterRemoteMapperImplTest{
 
-
     //var characterRemoteMapper: CharacterRemoteMapper
-    lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
+    @Mock lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
 
     @Before
     fun setUp(){
@@ -24,7 +24,6 @@ class CharacterRemoteMapperImplTest{
     }
     @Test
     fun `convert characterListDTO to List of ResultModel`(){
-
         val urlDTO = UrlDTO("detail", "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=fcf9a89dd88a8f74de6a92ffa8deccc6")
         val itemDTO = ItemDTO("Avengers","http://gateway.marvel.com/v1/public/characters/1011334")
         val comicsDTO = ComicsDTO(1, "http://gateway.marvel.com/v1/public/characters/1011334/comics", listOf(itemDTO), 2)
@@ -45,8 +44,6 @@ class CharacterRemoteMapperImplTest{
             "f0f50f72d6ce5fc",
             "Ok")
 
-
-
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
         val comicsModel = ComicsModel(5)
@@ -58,11 +55,7 @@ class CharacterRemoteMapperImplTest{
         val characterList = listOf(resultModel)
 
         Mockito.`when`(characterRemoteMapperImpl.toModel(characterListDTO)).thenReturn(characterList)
-        assertEquals(true,  characterRemoteMapperImpl.toModel(characterListDTO))
-        verify { characterRemoteMapperImpl.toModel(characterListDTO) }
-
-
-
-
+       // assertEquals(true,  characterRemoteMapperImpl.toModel(characterListDTO))
+        verify (characterRemoteMapperImpl.toModel(characterListDTO) )
     }
 }
