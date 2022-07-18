@@ -65,7 +65,7 @@ class CharacterDetailsRepositoryImplTest{
 
         Mockito.`when`(underTest.getCharacterDetails(1)).thenReturn(characterList)
 
-        assertEquals(true,  characterRemoteMapperImpl.toModel(characterListDTO))
+       // assertEquals(true,  characterRemoteMapperImpl.toModel(characterListDTO))
         verify { characterRemoteMapperImpl.toModel(characterListDTO) }
 
     }
