@@ -18,18 +18,8 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
         }.orEmpty()
     }
 
-
-    fun CharacterListDTO.toDomainCharaterModel():CharaterModel{
-        return CharaterModel(
-            code = code!!,
-            data = data!!.toDomainDataModel(),
-            status = status!!
-        )
-    }
-
     fun List<ResultDTO>.toDomainResultModel(): List<ResultModel>{
         return map{
-
             ResultModel(
                 id = it.id!!,
                 name = it.name!!,
@@ -41,26 +31,21 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
             )
         }
     }
-
     fun ThumbnailDTO.toDomainThumbnailModel(): ThumbnailModel {
         return ThumbnailModel(
             extension!!, path!!
         )
     }
-
     fun ComicsDTO.toDomainComicsModel(): ComicsModel {
         return ComicsModel(
             available!!
         )
     }
-
     fun StoriesDTO.toDomainStoriesModel(): StoriesModel {
         return StoriesModel(
             available!!
         )
     }
-
-
     fun SeriesDTO.toDomainSeriesModel(): SeriesModel {
         return SeriesModel(
             available!!
@@ -69,16 +54,6 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
     fun EventsDTO.toDomainEventsModel(): EventsModel {
         return EventsModel(
             available!!
-        )
-    }
-
-    fun DataDTO.toDomainDataModel(): DataModel {
-        return DataModel(
-            count = count!!,
-            limit = limit!!,
-            offset = offset!!,
-            results = results!!.toDomainResultModel(),
-            total = total!!
         )
     }
 }
