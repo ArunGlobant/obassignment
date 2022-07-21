@@ -2,7 +2,6 @@ package com.obassignment.data.mappers
 
 import com.nhaarman.mockitokotlin2.verify
 import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.data.repository.CharacterDetailsRepositoryImpl
 import com.obassignment.domain.model.charaterlistModel.*
 import io.mockk.MockKAnnotations
 import io.mockk.verify
@@ -14,7 +13,6 @@ import org.mockito.Mockito
 
 class CharacterRemoteMapperImplTest{
 
-    //var characterRemoteMapper: CharacterRemoteMapper
     @Mock lateinit var characterRemoteMapperImpl: CharacterRemoteMapperImpl
 
     @Before

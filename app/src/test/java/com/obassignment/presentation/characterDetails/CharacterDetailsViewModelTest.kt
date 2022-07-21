@@ -4,7 +4,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.*
-import com.obassignment.domain.repository.CharacterDetailsRepository
+import com.obassignment.domain.repository.CharactersRepository
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -21,7 +21,7 @@ class CharacterDetailsViewModelTest{
 
     @Mock
     lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
-    var characterDetailsRepository: CharacterDetailsRepository = mock()
+    var charactersRepository: CharactersRepository = mock()
     lateinit var underTest: CharacterDetailsViewModel
     val testDispatcher = TestCoroutineDispatcher()
 
@@ -30,7 +30,7 @@ class CharacterDetailsViewModelTest{
     fun setUp() {
         MockKAnnotations.init(this)
         Dispatchers.setMain(testDispatcher)
-        getCharacterDetailsUseCaseImpl = Mockito.spy(GetCharacterDetailsUseCaseImpl(characterDetailsRepository))
+        getCharacterDetailsUseCaseImpl = Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
         underTest = CharacterDetailsViewModel(getCharacterDetailsUseCaseImpl)
     }
 
@@ -54,7 +54,7 @@ class CharacterDetailsViewModelTest{
                     seriesModel, eventsModel)
                     )))
 
-            Mockito.verify (characterDetailsRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify (charactersRepository, times(0)).getCharacterDetails(1)
         }
     }
 
@@ -63,7 +63,7 @@ class CharacterDetailsViewModelTest{
         runBlocking {
             Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
                 .thenReturn(Response.Success(listOf<ResultModel>()))
-            Mockito.verify (characterDetailsRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify (charactersRepository, times(0)).getCharacterDetails(1)
         }
     }
 

@@ -2,7 +2,6 @@ package com.obassignment.presentation.characterDetails
 
 import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.ResultModel
-import com.obassignment.domain.repository.CharacterDetailsRepository
 import com.obassignment.domain.repository.CharactersRepository
 import com.obassignment.domain.useCase.GetCharacterDetailsUseCase
 

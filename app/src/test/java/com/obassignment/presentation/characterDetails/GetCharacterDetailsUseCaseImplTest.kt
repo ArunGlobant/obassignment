@@ -3,7 +3,7 @@ package com.obassignment.presentation.characterDetails
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.obassignment.domain.model.charaterlistModel.*
-import com.obassignment.domain.repository.CharacterDetailsRepository
+import com.obassignment.domain.repository.CharactersRepository
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -16,7 +16,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 class GetCharacterDetailsUseCaseImplTest{
-    var characterDetailsRepository: CharacterDetailsRepository = mock()
+    var charactersRepository: CharactersRepository = mock()
     @Mock
     lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
     val testDispatcher = TestCoroutineDispatcher()
@@ -25,7 +25,7 @@ class GetCharacterDetailsUseCaseImplTest{
     fun setUp(){
         MockKAnnotations.init(this)
         Dispatchers.setMain(testDispatcher)
-        getCharacterDetailsUseCaseImpl = Mockito.spy(GetCharacterDetailsUseCaseImpl(characterDetailsRepository))
+        getCharacterDetailsUseCaseImpl = Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
     }
     @Test
     fun `ensure to call  get character details function and get success in response`(){
@@ -37,13 +37,13 @@ class GetCharacterDetailsUseCaseImplTest{
         val eventsModel = EventsModel(2)
 
         runBlocking {
-            Mockito.`when`(characterDetailsRepository.getCharacterDetails(1))
+            Mockito.`when`(charactersRepository.getCharacterDetails(1))
                 .thenReturn(
                     listOf<ResultModel>(
                         ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                             seriesModel, eventsModel)
                     ))
-            Mockito.verify (characterDetailsRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify (charactersRepository, times(0)).getCharacterDetails(1)
         }
     }
 }

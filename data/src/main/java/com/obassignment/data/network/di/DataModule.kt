@@ -5,9 +5,7 @@ import com.obassignment.common.Constants
 import com.obassignment.data.mappers.CharacterRemoteMapper
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
-import com.obassignment.data.repository.CharacterDetailsRepositoryImpl
 import com.obassignment.data.repository.CharactersRepositoryImpl
-import com.obassignment.domain.repository.CharacterDetailsRepository
 import com.obassignment.domain.repository.CharactersRepository
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -40,7 +38,6 @@ val dataAppModule = module {
 val dataInterModule = module {
     factory { CharacterRemoteMapperImpl() } bind CharacterRemoteMapper::class
     factory { CharactersRepositoryImpl(get(), get()) } bind CharactersRepository::class
-    //factory { CharacterDetailsRepositoryImpl(get(),get()) } bind CharacterDetailsRepository::class
 }
 
 
