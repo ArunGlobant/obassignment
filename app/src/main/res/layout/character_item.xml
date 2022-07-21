@@ -8,7 +8,6 @@
         <variable
             name="result"
             type="com.obassignment.domain.model.charaterlistModel.ResultModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +33,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageCharacter" />
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

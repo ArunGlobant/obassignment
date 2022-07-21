@@ -2,10 +2,9 @@ package com.obassignment.presentation.characterDetails
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
-import com.obassignment.common.Resource
+import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.*
 import com.obassignment.domain.repository.CharacterDetailsRepository
-import com.obassignment.domain.repository.CharactersRepository
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -13,7 +12,6 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -49,9 +47,9 @@ class CharacterDetailsViewModelTest{
             seriesModel, eventsModel)
 
         runBlocking {
-            Mockito.`when`(getCharacterDetailsUseCaseImpl.getcharaterDetail(1))
+            Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
                 .thenReturn(
-                    Resource.Success(listOf<ResultModel>(
+                    Response.Success(listOf<ResultModel>(
                         ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                     seriesModel, eventsModel)
                     )))
@@ -63,8 +61,8 @@ class CharacterDetailsViewModelTest{
     @Test
     fun `empty charater details test`(){
         runBlocking {
-            Mockito.`when`(getCharacterDetailsUseCaseImpl.getcharaterDetail(1))
-                .thenReturn(Resource.Success(listOf<ResultModel>()))
+            Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
+                .thenReturn(Response.Success(listOf<ResultModel>()))
             Mockito.verify (characterDetailsRepository, times(0)).getCharacterDetails(1)
         }
     }

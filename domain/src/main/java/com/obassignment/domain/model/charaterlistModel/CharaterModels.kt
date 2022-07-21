@@ -1,13 +1,10 @@
 package com.obassignment.domain.model.charaterlistModel
 
-
-
 data class CharaterModel(
     val code: Int,
     val `data`: DataModel,
     val status: String
 )
-
 
 data class ComicsModel(
     val available: Int,
@@ -24,15 +21,7 @@ data class DataModel(
 data class EventsModel(
     val available: Int
 )
-data class ItemModel(
-    val name: String,
-    val resourceURI: String
-)
-data class ItemXXXModel(
-    val name: String,
-    val resourceURI: String,
-    val type: String
-)
+
 data class ResultModel(
     val id: Int,
     val name: String,
@@ -55,11 +44,6 @@ data class StoriesModel(
 data class ThumbnailModel(
     val extension: String,
     val path: String
-)
-
-data class UrlModel(
-    val type: String,
-    val url: String
 )
 
 

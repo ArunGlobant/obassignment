@@ -32,6 +32,11 @@ class CharacterDetailsFragment : Fragment() {
         args.charaterId?.let {
             characterDetailsViewModel.getCharacterDetails(it)
         }
+        getCharacterResponseById()
+        setClickOnBackButton()
+    }
+
+    private fun getCharacterResponseById(){
         lifecycle.coroutineScope.launchWhenCreated {
             characterDetailsViewModel.characterDetails.collect{
                 if(it.isLoading){
@@ -51,9 +56,10 @@ class CharacterDetailsFragment : Fragment() {
                 }
             }
         }
+    }
+    private fun setClickOnBackButton(){
         binding.imageBack.setOnClickListener{
             findNavController().popBackStack()
         }
     }
-
 }

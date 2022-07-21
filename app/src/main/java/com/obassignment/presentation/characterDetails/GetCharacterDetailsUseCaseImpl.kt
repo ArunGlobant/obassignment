@@ -1,7 +1,6 @@
 package com.obassignment.presentation.characterDetails
 
-import android.util.Log
-import com.obassignment.common.Resource
+import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.ResultModel
 import com.obassignment.domain.repository.CharacterDetailsRepository
 import com.obassignment.domain.useCase.GetCharacterDetailsUseCase
@@ -9,14 +8,12 @@ import com.obassignment.domain.useCase.GetCharacterDetailsUseCase
 
 class GetCharacterDetailsUseCaseImpl constructor(private val characterDetailsRepository: CharacterDetailsRepository)
     : GetCharacterDetailsUseCase {
-    override suspend fun getcharaterDetail(characterId: Int): Resource<List<ResultModel>> {
+    override suspend fun getCharacterDetail(characterId: Int): Response<List<ResultModel>> {
         try {
             val response = characterDetailsRepository.getCharacterDetails(characterId)
-            Log.d("API RESPONSE Success: ", "" + response)
-            return Resource.Success(data = response)
+            return Response.Success(data = response)
         } catch (e: Exception) {
-            return Resource.Error(""+e.localizedMessage)
-            Log.d("API RESPONSE Error: ", "" + e)
+            return Response.Error(""+e.localizedMessage)
         }
     }
 

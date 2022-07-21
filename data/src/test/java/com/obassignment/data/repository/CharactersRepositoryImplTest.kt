@@ -1,8 +1,6 @@
 package com.obassignment.data.repository
 
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
-import com.obassignment.common.Resource
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
 import com.obassignment.data.network.dto.characterlistDto.*
@@ -13,10 +11,7 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.mock
-import java.sql.Timestamp
 
 class CharactersRepositoryImplTest{
 

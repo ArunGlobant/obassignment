@@ -15,8 +15,7 @@ interface ApiService {
     suspend fun getCharactersList(
         @Query("apikey") apiKey: String = Constants.PUBLIC_API_KEY,
         @Query("ts") ts: String = Constants.timeStamp,
-        @Query("hash") hash: String = Constants.hash(),
-        @Query("offset") offset: String
+        @Query("hash") hash: String = Constants.hash()
     ): Response<CharacterListDTO>
 
 

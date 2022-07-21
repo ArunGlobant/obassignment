@@ -2,11 +2,9 @@ package com.obassignment.presentation.characterList
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
-import com.obassignment.common.Resource
-import com.obassignment.data.mappers.CharacterRemoteMapperImpl
+import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.*
 import com.obassignment.domain.repository.CharactersRepository
-import com.obassignment.domain.useCase.GetCharactersUseCase
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
@@ -14,12 +12,10 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
-import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 class CharaterListViewModelTest{
@@ -49,8 +45,8 @@ class CharaterListViewModelTest{
             seriesModel, eventsModel)
 
         runBlocking {
-            Mockito.`when`(getCharactersUseCaseImpl.getcharacterList())
-                .thenReturn(Resource.Success(listOf<ResultModel>(ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            Mockito.`when`(getCharactersUseCaseImpl.getCharacterList())
+                .thenReturn(Response.Success(listOf<ResultModel>(ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                     seriesModel, eventsModel))))
             var result = underTest.getCharacterList()
 
@@ -61,8 +57,8 @@ class CharaterListViewModelTest{
     @Test
     fun `empty charater list test`(){
         runBlocking {
-            Mockito.`when`(getCharactersUseCaseImpl.getcharacterList())
-                .thenReturn(Resource.Success(listOf<ResultModel>()))
+            Mockito.`when`(getCharactersUseCaseImpl.getCharacterList())
+                .thenReturn(Response.Success(listOf<ResultModel>()))
             verify (charactersRepository, times(1)).getCharacterList()
         }
     }

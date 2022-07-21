@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <!-- <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-
-        tools:layout="@layout/fragment_character_list" />
-
--->
     <fragment
         android:layout_width="match_parent"
         android:layout_height="match_parent"

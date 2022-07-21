@@ -15,8 +15,7 @@ class CharactersRepositoryImpl constructor(private val apiService: ApiService,
        val response = apiService.getCharactersList(
            Constants.PUBLIC_API_KEY,
            Constants.timeStamp,
-           Constants.hash(),
-           "")
+           Constants.hash())
         return characterRemoteMapperImpl.toModel(response.body()!!)
     }
 }

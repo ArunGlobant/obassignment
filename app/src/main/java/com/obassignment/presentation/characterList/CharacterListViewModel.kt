@@ -1,9 +1,8 @@
 package com.obassignment.presentation.characterList
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.obassignment.common.Resource
+import com.obassignment.common.Response
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
@@ -16,18 +15,16 @@ class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: G
 
     fun getCharacterList(){
         viewModelScope.launch {
-            val response = getCharactersUseCaseImpl.getcharacterList()
+            val response = getCharactersUseCaseImpl.getCharacterList()
             when (response) {
-                is Resource.Loading -> {
+                is Response.Loading -> {
                     _characterList.value = CharacterState(isLoading = true)
                 }
-                is Resource.Error -> {
+                is Response.Error -> {
                     _characterList.value = CharacterState(error = response.message ?: "")
-                  //  Log.d("Error:====  ", "" + _characterList.value)
                 }
-                is Resource.Success -> {
+                is Response.Success -> {
                     _characterList.value = CharacterState(data = response.data)
-                   // Log.d("data:====  ", "" + _characterList.value)
                 }
             }
         }

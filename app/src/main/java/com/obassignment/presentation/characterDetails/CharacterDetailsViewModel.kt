@@ -1,9 +1,8 @@
 package com.obassignment.presentation.characterDetails
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.obassignment.common.Resource
+import com.obassignment.common.Response
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -17,18 +16,16 @@ class CharacterDetailsViewModel constructor(private val getCharacterDetailsUseCa
 
     fun getCharacterDetails(characterId: Int){
         viewModelScope.launch {
-            val response = getCharacterDetailsUseCaseImpl.getcharaterDetail(characterId)
+            val response = getCharacterDetailsUseCaseImpl.getCharacterDetail(characterId)
             when (response) {
-                is Resource.Loading -> {
+                is Response.Loading -> {
                     _characterDetails.value = CharacterDetailsState(isLoading = true)
                 }
-                is Resource.Error -> {
+                is Response.Error -> {
                     _characterDetails.value = CharacterDetailsState(error = response.message ?: "")
-                   // Log.d("Error:====  ", "" + _characterDetails.value)
                 }
-                is Resource.Success -> {
+                is Response.Success -> {
                     _characterDetails.value = CharacterDetailsState(data = response.data)
-                   // Log.d("data:====  ", "" + _characterDetails.value)
                 }
             }
         }
