@@ -40,7 +40,7 @@ val dataAppModule = module {
 val dataInterModule = module {
     factory { CharacterRemoteMapperImpl() } bind CharacterRemoteMapper::class
     factory { CharactersRepositoryImpl(get(), get()) } bind CharactersRepository::class
-    factory { CharacterDetailsRepositoryImpl(get(),get()) } bind CharacterDetailsRepository::class
+    //factory { CharacterDetailsRepositoryImpl(get(),get()) } bind CharacterDetailsRepository::class
 }
 
 
