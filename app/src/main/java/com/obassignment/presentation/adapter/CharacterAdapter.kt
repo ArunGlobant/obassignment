@@ -1,5 +1,6 @@
 package com.obassignment.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,10 +10,11 @@ import com.obassignment.domain.model.charaterlistModel.ResultModel
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
 
     private var listener: ((ResultModel) -> Unit)? = null
-    var list = mutableListOf<ResultModel>()
+    private var list = mutableListOf<ResultModel>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setContent(list: MutableList<ResultModel>) {
-        this.list = list
+        list.also { this.list = it }
         notifyDataSetChanged()
     }
 
@@ -22,7 +24,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CharacterAdapter.MyViewHolder {
+    ): MyViewHolder {
         val binding =
             CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
@@ -32,7 +34,7 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
         listener = result
     }
 
-    override fun onBindViewHolder(holder: CharacterAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.viewHolder.result = this.list[position]
         holder.viewHolder.root.setOnClickListener {
             listener?.let {

@@ -9,12 +9,11 @@ import androidx.lifecycle.coroutineScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.obassignment.databinding.FragmentCharacterDetailsBinding
-import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterDetailsFragment : Fragment() {
     private var _binding: FragmentCharacterDetailsBinding? = null
-    val binding: FragmentCharacterDetailsBinding
+    private val binding: FragmentCharacterDetailsBinding
         get() = _binding!!
 
     private val characterDetailsViewModel: CharacterDetailsViewModel by viewModel()
@@ -30,7 +29,7 @@ class CharacterDetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        args.charaterId?.let {
+        args.charaterId.let {
             characterDetailsViewModel.getCharacterDetails(it)
         }
         getCharacterResponseById()

@@ -9,11 +9,11 @@ import com.obassignment.domain.useCase.GetCharacterDetailsUseCase
 class GetCharacterDetailsUseCaseImpl constructor(private val charactersRepository: CharactersRepository) :
     GetCharacterDetailsUseCase {
     override suspend fun getCharacterDetail(characterId: Int): Response<List<ResultModel>> {
-        try {
+        return try {
             val response = charactersRepository.getCharacterDetails(characterId)
-            return Response.Success(data = response)
+            Response.Success(data = response)
         } catch (e: Exception) {
-            return Response.Error("" + e.localizedMessage)
+            Response.Error("" + e.localizedMessage)
         }
     }
 

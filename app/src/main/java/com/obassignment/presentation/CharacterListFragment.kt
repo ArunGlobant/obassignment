@@ -18,7 +18,7 @@ class CharacterListFragment : Fragment() {
     private val viewModel: CharacterListViewModel by viewModel()
     private var _binding: FragmentCharacterListBinding? = null
 
-    val binding: FragmentCharacterListBinding
+    private val binding: FragmentCharacterListBinding
         get() = _binding!!
 
     override fun onCreateView(

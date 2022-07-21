@@ -11,13 +11,12 @@ import kotlinx.coroutines.launch
 class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: GetCharactersUseCaseImpl) :
     ViewModel() {
 
-    private val _characterList = MutableStateFlow<CharacterState>(CharacterState())
+    private val _characterList = MutableStateFlow(CharacterState())
     val characterList: StateFlow<CharacterState> = _characterList
 
     fun getCharacterList() {
         viewModelScope.launch {
-            val response = getCharactersUseCaseImpl.getCharacterList()
-            when (response) {
+            when (val response = getCharactersUseCaseImpl.getCharacterList()) {
                 is Response.Loading -> {
                     _characterList.value = CharacterState(isLoading = true)
                 }

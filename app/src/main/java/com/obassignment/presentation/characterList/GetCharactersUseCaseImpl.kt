@@ -9,11 +9,11 @@ import com.obassignment.domain.useCase.GetCharactersUseCase
 class GetCharactersUseCaseImpl constructor(private val charactersRepository: CharactersRepository) :
     GetCharactersUseCase {
     override suspend fun getCharacterList(): Response<List<ResultModel>> {
-        try {
+        return try {
             val response = charactersRepository.getCharacterList()
-            return Response.Success(data = response)
+            Response.Success(data = response)
         } catch (e: Exception) {
-            return Response.Error("" + e.localizedMessage)
+            Response.Error("" + e.localizedMessage)
         }
     }
 }

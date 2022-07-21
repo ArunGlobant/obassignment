@@ -13,13 +13,12 @@ class CharacterDetailsViewModel constructor(
     GetCharacterDetailsUseCaseImpl
 ) : ViewModel() {
 
-    private val _characterDetails = MutableStateFlow<CharacterDetailsState>(CharacterDetailsState())
+    private val _characterDetails = MutableStateFlow(CharacterDetailsState())
     val characterDetails: StateFlow<CharacterDetailsState> = _characterDetails
 
     fun getCharacterDetails(characterId: Int) {
         viewModelScope.launch {
-            val response = getCharacterDetailsUseCaseImpl.getCharacterDetail(characterId)
-            when (response) {
+            when (val response = getCharacterDetailsUseCaseImpl.getCharacterDetail(characterId)) {
                 is Response.Loading -> {
                     _characterDetails.value = CharacterDetailsState(isLoading = true)
                 }

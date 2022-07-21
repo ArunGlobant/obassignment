@@ -21,7 +21,7 @@
             android:background="?attr/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></com.google.android.material.appbar.MaterialToolbar>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageBack"
@@ -94,7 +94,6 @@
             android:text="@string/series_count"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/txtComics" />
-
 
         <TextView
             android:id="@+id/txtSeriesCount"
