@@ -4,5 +4,5 @@ import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.ResultModel
 
 interface GetCharacterDetailsUseCase {
-   suspend fun getCharacterDetail(characterId: Int) : Response<List<ResultModel>>
+    suspend fun getCharacterDetail(characterId: Int): Response<List<ResultModel>>
 }

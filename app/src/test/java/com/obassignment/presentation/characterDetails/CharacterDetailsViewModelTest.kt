@@ -17,7 +17,7 @@ import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 
-class CharacterDetailsViewModelTest{
+class CharacterDetailsViewModelTest {
 
     @Mock
     lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
@@ -30,12 +30,13 @@ class CharacterDetailsViewModelTest{
     fun setUp() {
         MockKAnnotations.init(this)
         Dispatchers.setMain(testDispatcher)
-        getCharacterDetailsUseCaseImpl = Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
+        getCharacterDetailsUseCaseImpl =
+            Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
         underTest = CharacterDetailsViewModel(getCharacterDetailsUseCaseImpl)
     }
 
     @Test
-    fun `ensure to call  get character details function and get data`()  {
+    fun `ensure to call  get character details function and get data`() {
 
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
@@ -43,27 +44,34 @@ class CharacterDetailsViewModelTest{
         val seriesModel = SeriesModel(4)
         val storiesModel = StoriesModel(5)
         val eventsModel = EventsModel(2)
-        val resultModel = ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
-            seriesModel, eventsModel)
+        val resultModel = ResultModel(
+            1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            seriesModel, eventsModel
+        )
 
         runBlocking {
             Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
                 .thenReturn(
-                    Response.Success(listOf<ResultModel>(
-                        ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
-                    seriesModel, eventsModel)
-                    )))
+                    Response.Success(
+                        listOf<ResultModel>(
+                            ResultModel(
+                                1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+                                seriesModel, eventsModel
+                            )
+                        )
+                    )
+                )
 
-            Mockito.verify (charactersRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify(charactersRepository, times(0)).getCharacterDetails(1)
         }
     }
 
     @Test
-    fun `empty charater details test`(){
+    fun `empty charater details test`() {
         runBlocking {
             Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
                 .thenReturn(Response.Success(listOf<ResultModel>()))
-            Mockito.verify (charactersRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify(charactersRepository, times(0)).getCharacterDetails(1)
         }
     }
 

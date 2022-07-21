@@ -8,28 +8,27 @@ import com.obassignment.domain.model.charaterlistModel.ResultModel
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
 
-    private var listener: ((ResultModel) -> Unit)?=null
+    private var listener: ((ResultModel) -> Unit)? = null
     var list = mutableListOf<ResultModel>()
 
-    fun setContent(list: MutableList<ResultModel>){
+    fun setContent(list: MutableList<ResultModel>) {
         this.list = list
         notifyDataSetChanged()
     }
 
-
-    class MyViewHolder(val viewHolder: CharacterItemBinding):
+    class MyViewHolder(val viewHolder: CharacterItemBinding) :
         RecyclerView.ViewHolder(viewHolder.root)
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): CharacterAdapter.MyViewHolder {
-        val binding = CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent,false)
+        val binding =
+            CharacterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(binding)
     }
 
-    fun itemClickListener(result: (ResultModel) -> Unit){
+    fun itemClickListener(result: (ResultModel) -> Unit) {
         listener = result
     }
 
@@ -43,6 +42,6 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-        return  this.list.size
+        return this.list.size
     }
 }

@@ -19,7 +19,6 @@ interface ApiService {
     ): Response<CharacterListDTO>
 
 
-
     @GET("v1/public/characters/{characterId}")
     suspend fun getCharacterDetails(
         @Path("characterId") characterId: Int,

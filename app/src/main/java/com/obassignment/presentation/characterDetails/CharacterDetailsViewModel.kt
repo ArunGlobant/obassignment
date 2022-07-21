@@ -8,14 +8,15 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class CharacterDetailsViewModel constructor(private val getCharacterDetailsUseCaseImpl:
-                                            GetCharacterDetailsUseCaseImpl):
-    ViewModel(){
+class CharacterDetailsViewModel constructor(
+    private val getCharacterDetailsUseCaseImpl:
+    GetCharacterDetailsUseCaseImpl
+) : ViewModel() {
 
     private val _characterDetails = MutableStateFlow<CharacterDetailsState>(CharacterDetailsState())
     val characterDetails: StateFlow<CharacterDetailsState> = _characterDetails
 
-    fun getCharacterDetails(characterId: Int){
+    fun getCharacterDetails(characterId: Int) {
         viewModelScope.launch {
             val response = getCharacterDetailsUseCaseImpl.getCharacterDetail(characterId)
             when (response) {
@@ -23,7 +24,8 @@ class CharacterDetailsViewModel constructor(private val getCharacterDetailsUseCa
                     _characterDetails.value = CharacterDetailsState(isLoading = true)
                 }
                 is Response.Error -> {
-                    _characterDetails.value = CharacterDetailsState(error = response.message ?: EMPTY_VALUE)
+                    _characterDetails.value =
+                        CharacterDetailsState(error = response.message ?: EMPTY_VALUE)
                 }
                 is Response.Success -> {
                     _characterDetails.value = CharacterDetailsState(data = response.data)

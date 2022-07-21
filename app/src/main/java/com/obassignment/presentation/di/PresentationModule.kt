@@ -12,7 +12,7 @@ import org.koin.dsl.bind
 import org.koin.dsl.module
 
 @KoinReflectAPI
-val viewModelMoudle = module{
+val viewModelMoudle = module {
     viewModel { CharacterListViewModel(get()) }
     viewModel { CharacterDetailsViewModel(get()) }
 }

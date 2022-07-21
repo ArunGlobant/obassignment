@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="result"
             type="com.obassignment.domain.model.charaterlistModel.ResultModel" />
@@ -16,32 +18,31 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="?attr/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-        </com.google.android.material.appbar.MaterialToolbar>
+            app:layout_constraintTop_toTopOf="parent"></com.google.android.material.appbar.MaterialToolbar>
 
         <ImageView
             android:id="@+id/imageBack"
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30"
             android:layout_marginLeft="@dimen/dp_5"
-            app:layout_constraintTop_toTopOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
             android:src="@drawable/icon_back"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toTopOf="@id/toolbar"
             tools:ignore="ContentDescription,MissingConstraints" />
 
         <TextView
             android:id="@+id/txtHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/character_details"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/toolbar"
             app:layout_constraintLeft_toRightOf="@+id/imageBack"
             app:layout_constraintTop_toTopOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="@id/toolbar"
-            android:textColor="@color/white"
-            android:text="@string/character_details"
-            android:gravity="center_horizontal"
             tools:ignore="MissingConstraints" />
 
         <ImageView
@@ -58,8 +59,8 @@
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{result.name}"
             android:layout_marginTop="@dimen/dp_5"
+            android:text="@{result.name}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageCharacter" />
@@ -69,8 +70,8 @@
             android:id="@+id/txtComics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/comics_count"
             android:layout_marginTop="@dimen/dp_20"
+            android:text="@string/comics_count"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/txtName" />
 
@@ -79,8 +80,8 @@
             android:id="@+id/txtComicsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(result.comics.available)}"
             android:layout_marginTop="@dimen/dp_20"
+            android:text="@{Integer.toString(result.comics.available)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtComics"
             app:layout_constraintTop_toBottomOf="@+id/txtName" />
@@ -89,8 +90,8 @@
             android:id="@+id/txtSeries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/series_count"
             android:layout_marginTop="@dimen/dp_10"
+            android:text="@string/series_count"
             app:layout_constraintStart_toStartOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/txtComics" />
 
@@ -99,8 +100,8 @@
             android:id="@+id/txtSeriesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(result.series.available)}"
             android:layout_marginTop="@dimen/dp_10"
+            android:text="@{Integer.toString(result.series.available)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtSeries"
             app:layout_constraintTop_toBottomOf="@+id/txtComicsCount" />
@@ -109,17 +110,17 @@
             android:id="@+id/txtStories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/stories_count"
             android:layout_marginTop="@dimen/dp_10"
-            app:layout_constraintTop_toBottomOf="@+id/txtSeries"
-            app:layout_constraintStart_toStartOf="@+id/guideline"/>
+            android:text="@string/stories_count"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/txtSeries" />
 
         <TextView
             android:id="@+id/txtStoriesCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(result.stories.available)}"
             android:layout_marginTop="@dimen/dp_10"
+            android:text="@{Integer.toString(result.stories.available)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtStories"
             app:layout_constraintTop_toBottomOf="@+id/txtSeriesCount" />
@@ -128,17 +129,17 @@
             android:id="@+id/txtEvents"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/events_count"
             android:layout_marginTop="@dimen/dp_10"
-            app:layout_constraintTop_toBottomOf="@+id/txtStories"
-            app:layout_constraintStart_toStartOf="@+id/guideline"/>
+            android:text="@string/events_count"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/txtStories" />
 
         <TextView
             android:id="@+id/txtEventsCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{Integer.toString(result.events.available)}"
             android:layout_marginTop="@dimen/dp_10"
+            android:text="@{Integer.toString(result.events.available)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/txtEvents"
             app:layout_constraintTop_toBottomOf="@+id/txtStoriesCount" />

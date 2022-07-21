@@ -1,6 +1,6 @@
 package com.obassignment.common
 
-sealed class Response<T>(val data: T? = null, val message: String? = null){
+sealed class Response<T>(val data: T? = null, val message: String? = null) {
 
     class Success<T>(data: T) : Response<T>(data)
 

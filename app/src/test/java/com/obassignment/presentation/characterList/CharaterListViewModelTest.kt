@@ -18,8 +18,9 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.Mockito.verify
 
-class CharaterListViewModelTest{
-    @Mock lateinit var getCharactersUseCaseImpl: GetCharactersUseCaseImpl
+class CharaterListViewModelTest {
+    @Mock
+    lateinit var getCharactersUseCaseImpl: GetCharactersUseCaseImpl
     var charactersRepository: CharactersRepository = mock()
     lateinit var underTest: CharacterListViewModel
     val testDispatcher = TestCoroutineDispatcher()
@@ -33,7 +34,7 @@ class CharaterListViewModelTest{
     }
 
     @Test
-    fun `ensure to call  getCharacterList function and get data`()  {
+    fun `ensure to call  getCharacterList function and get data`() {
 
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
@@ -41,25 +42,35 @@ class CharaterListViewModelTest{
         val seriesModel = SeriesModel(4)
         val storiesModel = StoriesModel(5)
         val eventsModel = EventsModel(2)
-        val resultModel = ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
-            seriesModel, eventsModel)
+        val resultModel = ResultModel(
+            1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+            seriesModel, eventsModel
+        )
 
         runBlocking {
             Mockito.`when`(getCharactersUseCaseImpl.getCharacterList())
-                .thenReturn(Response.Success(listOf<ResultModel>(ResultModel(1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
-                    seriesModel, eventsModel))))
+                .thenReturn(
+                    Response.Success(
+                        listOf<ResultModel>(
+                            ResultModel(
+                                1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
+                                seriesModel, eventsModel
+                            )
+                        )
+                    )
+                )
             var result = underTest.getCharacterList()
 
-             verify (charactersRepository, times(1)).getCharacterList()
+            verify(charactersRepository, times(1)).getCharacterList()
         }
     }
 
     @Test
-    fun `empty charater list test`(){
+    fun `empty charater list test`() {
         runBlocking {
             Mockito.`when`(getCharactersUseCaseImpl.getCharacterList())
                 .thenReturn(Response.Success(listOf<ResultModel>()))
-            verify (charactersRepository, times(1)).getCharacterList()
+            verify(charactersRepository, times(1)).getCharacterList()
         }
     }
 

@@ -12,12 +12,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.annotation.KoinReflectAPI
 import org.koin.dsl.bind
 import org.koin.dsl.module
-
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-fun provideApiService(): ApiService{
+fun provideApiService(): ApiService {
     val interceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
     val client: OkHttpClient = OkHttpClient.Builder().addInterceptor(interceptor).build()
@@ -32,7 +31,7 @@ fun provideApiService(): ApiService{
 
 @KoinReflectAPI
 val dataAppModule = module {
-    single { provideApiService()  }
+    single { provideApiService() }
 }
 
 val dataInterModule = module {

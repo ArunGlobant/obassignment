@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.obassignment.databinding.FragmentCharacterDetailsBinding
 import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 class CharacterDetailsFragment : Fragment() {
     private var _binding: FragmentCharacterDetailsBinding? = null
     val binding: FragmentCharacterDetailsBinding
@@ -36,19 +37,19 @@ class CharacterDetailsFragment : Fragment() {
         setClickOnBackButton()
     }
 
-    private fun getCharacterResponseById(){
+    private fun getCharacterResponseById() {
         lifecycle.coroutineScope.launchWhenCreated {
-            characterDetailsViewModel.characterDetails.collect{
-                if(it.isLoading){
+            characterDetailsViewModel.characterDetails.collect {
+                if (it.isLoading) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.VISIBLE
                 }
-                if(it.error.isNotBlank()){
+                if (it.error.isNotBlank()) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.GONE
                 }
                 it.data?.let {
-                    if(it.isEmpty()){
+                    if (it.isEmpty()) {
                         binding.txtNodata.visibility = View.VISIBLE
                     }
                     binding.txtprogressBar.visibility = View.GONE
@@ -57,8 +58,9 @@ class CharacterDetailsFragment : Fragment() {
             }
         }
     }
-    private fun setClickOnBackButton(){
-        binding.imageBack.setOnClickListener{
+
+    private fun setClickOnBackButton() {
+        binding.imageBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }

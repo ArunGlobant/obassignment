@@ -12,12 +12,10 @@ class Constants {
         const val EMPTY_VALUE = ""
         val timeStamp = Timestamp(System.currentTimeMillis()).time.toString()
 
-        fun hash(): String{
+        fun hash(): String {
             val input = "$timeStamp$PRIVATE_API_KEY$PUBLIC_API_KEY"
             val md = MessageDigest.getInstance("MD5")
-            return BigInteger(1,md.digest(input.toByteArray())).toString(16);
+            return BigInteger(1, md.digest(input.toByteArray())).toString(16);
         }
-
     }
-
 }

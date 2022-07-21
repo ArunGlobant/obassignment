@@ -8,13 +8,13 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 
-class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: GetCharactersUseCaseImpl):
-    ViewModel(){
+class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: GetCharactersUseCaseImpl) :
+    ViewModel() {
 
     private val _characterList = MutableStateFlow<CharacterState>(CharacterState())
     val characterList: StateFlow<CharacterState> = _characterList
 
-    fun getCharacterList(){
+    fun getCharacterList() {
         viewModelScope.launch {
             val response = getCharactersUseCaseImpl.getCharacterList()
             when (response) {

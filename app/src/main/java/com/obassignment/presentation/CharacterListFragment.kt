@@ -35,25 +35,27 @@ class CharacterListFragment : Fragment() {
         getCharacterListResponse()
         setOnItemClick()
     }
-    private fun setAdapter(){
+
+    private fun setAdapter() {
         binding.recyclerViewCharacters.apply {
             adapter = characterAdapter
         }
     }
-    private fun getCharacterListResponse(){
+
+    private fun getCharacterListResponse() {
         viewModel.getCharacterList()
         lifecycleScope.launchWhenCreated {
-            viewModel.characterList.collect{
-                if(it.isLoading){
+            viewModel.characterList.collect {
+                if (it.isLoading) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.VISIBLE
                 }
-                if(it.error.isNotBlank()){
+                if (it.error.isNotBlank()) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.GONE
                 }
                 it.data?.let {
-                    if(it.isEmpty()){
+                    if (it.isEmpty()) {
                         binding.txtNodata.visibility = View.VISIBLE
                     }
                     binding.txtprogressBar.visibility = View.GONE
@@ -62,7 +64,8 @@ class CharacterListFragment : Fragment() {
             }
         }
     }
-    private fun setOnItemClick(){
+
+    private fun setOnItemClick() {
         characterAdapter.itemClickListener {
             findNavController().navigate(
                 CharacterListFragmentDirections.actionCharaterListFragmentToCharaterDetailfragment(
