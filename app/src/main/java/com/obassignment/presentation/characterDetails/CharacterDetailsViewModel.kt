@@ -2,6 +2,7 @@ package com.obassignment.presentation.characterDetails
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.obassignment.common.Constants.Companion.EMPTY_VALUE
 import com.obassignment.common.Response
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +23,7 @@ class CharacterDetailsViewModel constructor(private val getCharacterDetailsUseCa
                     _characterDetails.value = CharacterDetailsState(isLoading = true)
                 }
                 is Response.Error -> {
-                    _characterDetails.value = CharacterDetailsState(error = response.message ?: "")
+                    _characterDetails.value = CharacterDetailsState(error = response.message ?: EMPTY_VALUE)
                 }
                 is Response.Success -> {
                     _characterDetails.value = CharacterDetailsState(data = response.data)

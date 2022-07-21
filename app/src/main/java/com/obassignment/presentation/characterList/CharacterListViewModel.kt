@@ -2,6 +2,7 @@ package com.obassignment.presentation.characterList
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.obassignment.common.Constants.Companion.EMPTY_VALUE
 import com.obassignment.common.Response
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -21,7 +22,7 @@ class CharacterListViewModel constructor(private val getCharactersUseCaseImpl: G
                     _characterList.value = CharacterState(isLoading = true)
                 }
                 is Response.Error -> {
-                    _characterList.value = CharacterState(error = response.message ?: "")
+                    _characterList.value = CharacterState(error = response.message ?: EMPTY_VALUE)
                 }
                 is Response.Success -> {
                     _characterList.value = CharacterState(data = response.data)

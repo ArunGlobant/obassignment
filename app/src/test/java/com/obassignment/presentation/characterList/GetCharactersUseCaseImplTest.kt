@@ -9,7 +9,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock

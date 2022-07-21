@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
 import com.obassignment.R
+import com.obassignment.common.Constants.Companion.EMPTY_VALUE
 
 
 @BindingAdapter("urlToImage")
@@ -21,13 +22,13 @@ fun urlToImage(view: ImageView, imageUrl: String){
     {
         Glide.with(view)
             .setDefaultRequestOptions(option)
-            .load(imageUrl.replace("http:", "https:") ?: "")
+            .load(imageUrl.replace("http:", "https:") ?: EMPTY_VALUE)
             .into(view)
 
     }else{
         Glide.with(view)
             .setDefaultRequestOptions(option)
-            .load(imageUrl ?: "")
+            .load(imageUrl ?: EMPTY_VALUE)
             .into(view)
     }
 }
