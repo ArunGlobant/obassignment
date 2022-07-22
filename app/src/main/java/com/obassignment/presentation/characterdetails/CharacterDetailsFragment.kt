@@ -38,21 +38,21 @@ class CharacterDetailsFragment : Fragment() {
 
     private fun getCharacterResponseById() {
         lifecycle.coroutineScope.launchWhenCreated {
-            characterDetailsViewModel.characterDetails.collect {
-                if (it.isLoading) {
+            characterDetailsViewModel.characterDetails.collect { characterDetailsState ->
+                if (characterDetailsState.isLoading) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.VISIBLE
                 }
-                if (it.error.isNotBlank()) {
+                if (characterDetailsState.error.isNotBlank()) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.GONE
                 }
-                it.data?.let {
+                characterDetailsState.data?.let {
                     if (it.isEmpty()) {
                         binding.txtNodata.visibility = View.VISIBLE
                     }
                     binding.txtprogressBar.visibility = View.GONE
-                    binding.result = it.get(0)
+                    binding.result = it[0]
                 }
             }
         }

@@ -45,16 +45,16 @@ class CharacterListFragment : Fragment() {
     private fun getCharacterListResponse() {
         viewModel.getCharacterList()
         lifecycleScope.launchWhenCreated {
-            viewModel.characterList.collect {
-                if (it.isLoading) {
+            viewModel.characterList.collect { characterState ->
+                if (characterState.isLoading) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.VISIBLE
                 }
-                if (it.error.isNotBlank()) {
+                if (characterState.error.isNotBlank()) {
                     binding.txtNodata.visibility = View.GONE
                     binding.txtprogressBar.visibility = View.GONE
                 }
-                it.data?.let {
+                characterState.data?.let {
                     if (it.isEmpty()) {
                         binding.txtNodata.visibility = View.VISIBLE
                     }
