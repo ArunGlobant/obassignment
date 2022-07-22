@@ -1,37 +1,36 @@
-package com.obassignment.presentation.characterDetails
+package com.obassignment.presentation.characterlist
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.obassignment.domain.model.charaterlistmodel.*
 import com.obassignment.domain.repository.CharactersRepository
-import com.obassignment.presentation.characterdetails.GetCharacterDetailsUseCaseImpl
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.setMain
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 
-class GetCharacterDetailsUseCaseImplTest {
-    private var charactersRepository: CharactersRepository = mock()
+class GetCharactersUseCaseImplTest {
+
+    var charactersRepository: CharactersRepository = mock()
 
     @Mock
-    lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
-    private val standardTestDispatcher = StandardTestDispatcher()
+    lateinit var getCharactersUseCaseImpl: GetCharactersUseCaseImpl
+    val testDispatcher = TestCoroutineDispatcher()
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        Dispatchers.setMain(standardTestDispatcher)
-        getCharacterDetailsUseCaseImpl =
-            Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
+        Dispatchers.setMain(testDispatcher)
+        getCharactersUseCaseImpl = Mockito.spy(GetCharactersUseCaseImpl(charactersRepository))
     }
 
     @Test
-    fun `ensure to call  get character details function and get success in response`() {
+    fun `ensure to call  getCharacterList function and get success in response`() {
         val thumbnailModel =
             ThumbnailModel("jpg", "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784")
         val comicsModel = ComicsModel(5)
@@ -40,16 +39,16 @@ class GetCharacterDetailsUseCaseImplTest {
         val eventsModel = EventsModel(2)
 
         runBlocking {
-            Mockito.`when`(charactersRepository.getCharacterDetails(1))
+            Mockito.`when`(charactersRepository.getCharacterList())
                 .thenReturn(
-                    listOf(
+                    listOf<ResultModel>(
                         ResultModel(
                             1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                             seriesModel, eventsModel
                         )
                     )
                 )
-            Mockito.verify(charactersRepository, times(0)).getCharacterDetails(1)
+            Mockito.verify(charactersRepository, times(0)).getCharacterList()
         }
     }
 }

@@ -1,12 +1,10 @@
-package com.obassignment.presentation.characterList
+package com.obassignment.presentation.characterlist
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistmodel.*
 import com.obassignment.domain.repository.CharactersRepository
-import com.obassignment.presentation.characterlist.CharacterListViewModel
-import com.obassignment.presentation.characterlist.GetCharactersUseCaseImpl
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
