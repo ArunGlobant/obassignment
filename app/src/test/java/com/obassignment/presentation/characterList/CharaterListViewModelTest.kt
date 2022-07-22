@@ -5,6 +5,8 @@ import com.nhaarman.mockitokotlin2.times
 import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.*
 import com.obassignment.domain.repository.CharactersRepository
+import com.obassignment.presentation.characterlist.CharacterListViewModel
+import com.obassignment.presentation.characterlist.GetCharactersUseCaseImpl
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking

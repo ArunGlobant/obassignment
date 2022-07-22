@@ -1,4 +1,4 @@
-package com.obassignment.presentation.characterList
+package com.obassignment.presentation.characterlist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

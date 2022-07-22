@@ -1,4 +1,4 @@
-package com.obassignment.presentation.characterDetails
+package com.obassignment.presentation.characterdetails
 
 import android.os.Bundle
 import android.view.LayoutInflater

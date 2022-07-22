@@ -1,4 +1,4 @@
-package com.obassignment.presentation.characterList
+package com.obassignment.presentation.characterlist
 
 import com.obassignment.common.Constants.Companion.EMPTY_VALUE
 import com.obassignment.domain.model.charaterlistModel.ResultModel

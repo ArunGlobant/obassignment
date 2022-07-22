@@ -1,4 +1,4 @@
-package com.obassignment.presentation.characterList
+package com.obassignment.presentation.characterlist
 
 import com.obassignment.common.Response
 import com.obassignment.domain.model.charaterlistModel.ResultModel

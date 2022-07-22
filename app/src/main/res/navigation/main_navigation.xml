@@ -22,7 +22,7 @@
 
     <fragment
         android:id="@+id/characterDetailsFragment"
-        android:name="com.obassignment.presentation.characterDetails.CharacterDetailsFragment"
+        android:name="com.obassignment.presentation.characterdetails.CharacterDetailsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <argument

@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.obassignment.databinding.FragmentCharacterListBinding
 import com.obassignment.presentation.adapter.CharacterAdapter
-import com.obassignment.presentation.characterList.CharacterListViewModel
+import com.obassignment.presentation.characterlist.CharacterListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterListFragment : Fragment() {
