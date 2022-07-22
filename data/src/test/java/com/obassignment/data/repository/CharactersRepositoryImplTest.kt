@@ -3,8 +3,8 @@ package com.obassignment.data.repository
 import com.nhaarman.mockitokotlin2.mock
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
-import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.domain.model.charaterlistModel.*
+import com.obassignment.data.network.dto.characterlistdto.*
+import com.obassignment.domain.model.charaterlistmodel.*
 import io.mockk.MockKAnnotations
 import io.mockk.verify
 import kotlinx.coroutines.runBlocking

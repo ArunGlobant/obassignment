@@ -1,8 +1,8 @@
 package com.obassignment.data.mappers
 
 import com.nhaarman.mockitokotlin2.verify
-import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.domain.model.charaterlistModel.*
+import com.obassignment.data.network.dto.characterlistdto.*
+import com.obassignment.domain.model.charaterlistmodel.*
 import io.mockk.MockKAnnotations
 import org.junit.Before
 import org.junit.Test

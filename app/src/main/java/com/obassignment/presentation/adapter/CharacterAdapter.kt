@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.obassignment.databinding.CharacterItemBinding
-import com.obassignment.domain.model.charaterlistModel.ResultModel
+import com.obassignment.domain.model.charaterlistmodel.ResultModel
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.MyViewHolder>() {
 

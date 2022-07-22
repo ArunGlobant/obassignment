@@ -1,4 +1,4 @@
-package com.obassignment.data.network.dto.characterlistDto
+package com.obassignment.data.network.dto.characterlistdto
 
 import com.squareup.moshi.Json
 

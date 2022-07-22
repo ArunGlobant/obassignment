@@ -2,7 +2,7 @@ package com.obassignment.presentation.characterList
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
-import com.obassignment.domain.model.charaterlistModel.*
+import com.obassignment.domain.model.charaterlistmodel.*
 import com.obassignment.domain.repository.CharactersRepository
 import com.obassignment.presentation.characterlist.GetCharactersUseCaseImpl
 import io.mockk.MockKAnnotations

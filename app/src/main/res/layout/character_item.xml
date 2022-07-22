@@ -9,7 +9,7 @@
 
         <variable
             name="result"
-            type="com.obassignment.domain.model.charaterlistModel.ResultModel" />
+            type="com.obassignment.domain.model.charaterlistmodel.ResultModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -3,7 +3,7 @@ package com.obassignment.data.repository
 import com.obassignment.common.Constants
 import com.obassignment.data.mappers.CharacterRemoteMapperImpl
 import com.obassignment.data.network.ApiService
-import com.obassignment.domain.model.charaterlistModel.ResultModel
+import com.obassignment.domain.model.charaterlistmodel.ResultModel
 import com.obassignment.domain.repository.CharactersRepository
 
 class CharactersRepositoryImpl constructor(

@@ -1,4 +1,4 @@
-package com.obassignment.domain.model.charaterlistModel
+package com.obassignment.domain.model.charaterlistmodel
 
 data class ComicsModel(
     val available: Int,

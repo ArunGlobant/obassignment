@@ -3,7 +3,7 @@ package com.obassignment.presentation.characterDetails
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.obassignment.common.Response
-import com.obassignment.domain.model.charaterlistModel.*
+import com.obassignment.domain.model.charaterlistmodel.*
 import com.obassignment.domain.repository.CharactersRepository
 import com.obassignment.presentation.characterdetails.CharacterDetailsViewModel
 import com.obassignment.presentation.characterdetails.GetCharacterDetailsUseCaseImpl

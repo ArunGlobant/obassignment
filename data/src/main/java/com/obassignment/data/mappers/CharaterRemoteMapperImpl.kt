@@ -1,7 +1,7 @@
 package com.obassignment.data.mappers
 
-import com.obassignment.data.network.dto.characterlistDto.*
-import com.obassignment.domain.model.charaterlistModel.*
+import com.obassignment.data.network.dto.characterlistdto.*
+import com.obassignment.domain.model.charaterlistmodel.*
 
 class CharacterRemoteMapperImpl : CharacterRemoteMapper {
     override fun toModel(characterListDTO: CharacterListDTO): List<ResultModel> {
