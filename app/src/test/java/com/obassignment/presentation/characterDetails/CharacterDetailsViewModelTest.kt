@@ -8,7 +8,7 @@ import com.obassignment.domain.repository.CharactersRepository
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -21,15 +21,15 @@ class CharacterDetailsViewModelTest {
 
     @Mock
     lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
-    var charactersRepository: CharactersRepository = mock()
-    lateinit var underTest: CharacterDetailsViewModel
-    val testDispatcher = TestCoroutineDispatcher()
+    private var charactersRepository: CharactersRepository = mock()
+    private lateinit var underTest: CharacterDetailsViewModel
+    private val standardTestDispatcher = StandardTestDispatcher()
 
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        Dispatchers.setMain(testDispatcher)
+        Dispatchers.setMain(standardTestDispatcher)
         getCharacterDetailsUseCaseImpl =
             Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
         underTest = CharacterDetailsViewModel(getCharacterDetailsUseCaseImpl)
@@ -44,16 +44,12 @@ class CharacterDetailsViewModelTest {
         val seriesModel = SeriesModel(4)
         val storiesModel = StoriesModel(5)
         val eventsModel = EventsModel(2)
-        val resultModel = ResultModel(
-            1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
-            seriesModel, eventsModel
-        )
 
         runBlocking {
             Mockito.`when`(getCharacterDetailsUseCaseImpl.getCharacterDetail(1))
                 .thenReturn(
                     Response.Success(
-                        listOf<ResultModel>(
+                        listOf(
                             ResultModel(
                                 1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                                 seriesModel, eventsModel

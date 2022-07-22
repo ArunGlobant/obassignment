@@ -18,45 +18,32 @@ class CharacterRemoteMapperImpl : CharacterRemoteMapper {
         }.orEmpty()
     }
 
-    fun List<ResultDTO>.toDomainResultModel(): List<ResultModel> {
-        return map {
-            ResultModel(
-                id = it.id!!,
-                name = it.name!!,
-                thumbnail = it.thumbnail!!.toDomainThumbnailModel(),
-                comics = it.comics!!.toDomainComicsModel(),
-                stories = it.stories!!.toDomainStoriesModel(),
-                series = it.series!!.toDomainSeriesModel(),
-                events = it.events!!.toDomainEventsModel()
-            )
-        }
-    }
 
-    fun ThumbnailDTO.toDomainThumbnailModel(): ThumbnailModel {
+    private fun ThumbnailDTO.toDomainThumbnailModel(): ThumbnailModel {
         return ThumbnailModel(
             extension!!, path!!
         )
     }
 
-    fun ComicsDTO.toDomainComicsModel(): ComicsModel {
+    private fun ComicsDTO.toDomainComicsModel(): ComicsModel {
         return ComicsModel(
             available!!
         )
     }
 
-    fun StoriesDTO.toDomainStoriesModel(): StoriesModel {
+    private fun StoriesDTO.toDomainStoriesModel(): StoriesModel {
         return StoriesModel(
             available!!
         )
     }
 
-    fun SeriesDTO.toDomainSeriesModel(): SeriesModel {
+    private fun SeriesDTO.toDomainSeriesModel(): SeriesModel {
         return SeriesModel(
             available!!
         )
     }
 
-    fun EventsDTO.toDomainEventsModel(): EventsModel {
+    private fun EventsDTO.toDomainEventsModel(): EventsModel {
         return EventsModel(
             available!!
         )

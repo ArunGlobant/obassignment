@@ -7,25 +7,24 @@ import com.obassignment.domain.repository.CharactersRepository
 import io.mockk.MockKAnnotations
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.setMain
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito
 
 class GetCharacterDetailsUseCaseImplTest {
-    var charactersRepository: CharactersRepository = mock()
+    private var charactersRepository: CharactersRepository = mock()
 
     @Mock
     lateinit var getCharacterDetailsUseCaseImpl: GetCharacterDetailsUseCaseImpl
-    val testDispatcher = TestCoroutineDispatcher()
+    private val standardTestDispatcher = StandardTestDispatcher()
 
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        Dispatchers.setMain(testDispatcher)
+        Dispatchers.setMain(standardTestDispatcher)
         getCharacterDetailsUseCaseImpl =
             Mockito.spy(GetCharacterDetailsUseCaseImpl(charactersRepository))
     }
@@ -42,7 +41,7 @@ class GetCharacterDetailsUseCaseImplTest {
         runBlocking {
             Mockito.`when`(charactersRepository.getCharacterDetails(1))
                 .thenReturn(
-                    listOf<ResultModel>(
+                    listOf(
                         ResultModel(
                             1, "3-D Man", thumbnailModel, comicsModel, storiesModel,
                             seriesModel, eventsModel
